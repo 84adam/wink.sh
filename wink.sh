@@ -5,7 +5,7 @@
 
 # get current BTC price in cents, log to wink.log
 
-curl -s "https://winkdex.com/api/v0/price" > wink.log
+curl -s -H "User-Agent: wink-sh" "https://winkdex.com/api/v0/price" > wink.log
 
 # cut and print BTC value in 'cents', log to cents.log
 
