@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Bitcoin price script using WINKDEX (https://winkdex.com/)
+# Bitcoin price script using WINKDEX API (https://winkdex.com/)
 # WARNING: Run no more than once per minute.
 
 # get current BTC price in cents, log to wink.log
@@ -11,7 +11,10 @@ curl -s -H "User-Agent: wink-sh" "https://winkdex.com/api/v0/price" > wink.log
 
 cat wink.log | cut -d " " -f 4 | cut -d "," -f 1 > cents.log
 
-# divide the 'cents' value by 100 and print dollar value to shell
-# NOTE: this chops off the cent values; indiscriminate rounding
+# set variable PRICE and calculate dollars and cents using 'bc'
 
-echo "The price for one bitcoin as of `date +\"%r\"` is: $"$((`cat cents.log` / 100))". [WINKDEX.COM]"
+PRICE=$(echo "`cat cents.log` * .01" | bc)
+
+# print PRICE along with current time and attribution
+
+echo "The price for one bitcoin as of `date +\"%r\"` is \$$PRICE. [WINKDEX.COM]"
