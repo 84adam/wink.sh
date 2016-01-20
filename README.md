@@ -1,5 +1,5 @@
 # wink.sh
-<h3>A Bash script to Display the Bitcoin Price in USD Using the WINKDEX API.</h3>
+<h3>A bash script to display the Bitcoin price in USD using the WINKDEX API.</h3>
 <h5>Example output:</h5>
 `The price for one bitcoin as of 10:05:30 PM is $380.43. [WINKDEX.COM]`
 <h5>Requires:</h5>
