@@ -9,7 +9,7 @@ curl -s -H "User-Agent: wink-sh" "https://winkdex.com/api/v0/price" > wink.log
 
 # cut and print BTC value in 'cents', log to cents.log
 
-cat wink.log | cut -d " " -f 4 | cut -d "," -f 1 > cents.log
+cat wink.log | cut -d ":" -f 5 | cut -d "," -f 1 > cents.log
 
 # set variable PRICE and calculate dollars and cents using 'bc'
 
