@@ -3,6 +3,13 @@
 # Bitcoin price script using WINKDEX API (https://winkdex.com/)
 # WARNING: Run no more than once per minute.
 
+# Create local wink folder "$HOME/bin/wink" if it doesn't exist yet                                                                                                                 
+
+if [ ! -d /$HOME/bin/wink ];                                                                                                                                                        
+  then                                                                                                                                                                              
+    mkdir -p /$HOME/bin/wink
+fi
+
 # get current BTC price in cents, log to wink.log
 
 curl -s -H "User-Agent: wink-sh" "https://winkdex.com/api/v0/price" > $HOME/bin/wink.log
@@ -19,4 +26,8 @@ PRICE=$(echo "`cat $HOME/bin/cents.log` * .01" | bc)
 
 echo "The price for one bitcoin as of `date +\"%r\"` is \$$PRICE. [WINKDEX.COM]"
 
-rm $HOME/bin/wink.log && rm $HOME/bin/cents.log
+# store DOLLAR value in dollars.log
+
+DOLLARS=$(echo $PRICE | cut -d '.' -f1)
+
+echo "$DOLLARS/btc" > $HOME/bin/wink/dollars.log
