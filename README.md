@@ -3,7 +3,8 @@
 
 <h5>Instructions:</h5>
 
-1. Make the script executable: `chmod u+x wink.sh`
+1. Download and move to `/home/user/bin` directory.
+2. Make the script executable: `chmod u+x wink.sh`
 2. Check for /$HOME/bin in $PATH: `echo $PATH | egrep $HOME/bin` ; set using `PATH=$PATH/$HOME/bin` if necessary
 3. Run: `wink.sh`
 4. Use responsibly: run no more than once per minute.
