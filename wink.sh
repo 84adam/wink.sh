@@ -27,7 +27,7 @@ PRICE=$(echo "`cat $HOME/bin/cents.log` * .01" | bc)
 
 DOLLAR_PRICE="\$$(echo "`cat $HOME/bin/cents.log` * .01" | bc)"
 
-cat $DOLLAR_PRICE > $HOME/bin/dollar_price.log
+echo $DOLLAR_PRICE > $HOME/bin/dollar_price.log
 
 # print PRICE along with current time and attribution
 
