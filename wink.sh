@@ -22,19 +22,18 @@ cat $HOME/bin/wink.log | cut -d ":" -f 5 | cut -d "," -f 1 > $HOME/bin/cents.log
 
 PRICE=$(echo "`cat $HOME/bin/cents.log` * .01" | bc)
 
-# set variable DOLLAR_PRICE for use in PS1/command-prompt or elsewhere on the system
-# log DOLLAR_PRICE to dollar_price.log
-
-DOLLAR_PRICE="\$$(echo "`cat $HOME/bin/cents.log` * .01" | bc)"
-
-echo $DOLLAR_PRICE > $HOME/bin/dollar_price.log
-
 # print PRICE along with current time and attribution
 
 echo "The price for one bitcoin as of `date +\"%r\"` is \$$PRICE. [WINKDEX.COM]"
 
-# store DOLLAR value in dollars.log
+# set variable DOLLARS (integer value/btc, no cents, no "$"), log to dollars.log
 
 DOLLARS=$(echo $PRICE | cut -d '.' -f1)
 
-echo "$DOLLARS/btc" > $HOME/bin/wink/dollars.log
+echo "$DOLLARS/btc" > $HOME/bin/dollars.log
+
+# set variable DOLLAR_PRICE (with cents, with "$"), log to dollar_price.log
+
+DOLLAR_PRICE="\$$(echo "`cat $HOME/bin/cents.log` * .01" | bc)"
+
+echo $DOLLAR_PRICE > $HOME/bin/dollar_price.log
