@@ -37,3 +37,11 @@ echo "$DOLLARS/btc" > $HOME/bin/wink/dollars.log
 DOLLAR_PRICE="\$$(echo "`cat $HOME/bin/wink/cents.log` * .01" | bc)"
 
 echo $DOLLAR_PRICE > $HOME/bin/wink/dollar_price.log
+
+# set variable DOLAMT (plain integer), log to dolamt.log
+
+DOLAMT=$(printf "%.0f" $(echo "scale=2; $(cat cents.log)/100" | bc))
+
+echo $DOLAMT > $HOME/bin/wink/dolamt.log
+
+
